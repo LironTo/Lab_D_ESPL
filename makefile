@@ -1,10 +1,12 @@
-all: multi
+all: clean link
 
-multi: multi.o
-	gcc -m32 multi.o -o multi
+link: compile
+	gcc -m32 -o multi multi.o
+
+compile: multi.o
 
 multi.o:
 	nasm -f elf32 multi.s -o multi.o
 
 clean:
-	rm -f multi *.o
+	rm -f *.o multi
